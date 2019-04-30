@@ -5,7 +5,8 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node app.js"
+    "start": "node app.js",
+    "dev": "nodemon app.js"
   },
   "repository": {
     "type": "git",
@@ -31,6 +32,7 @@
     "morgan": "^1.9.1",
     "mysql2": "^1.6.5",
     "nodemailer": "^6.1.1",
+    "pug": "^2.0.3",
     "sequelize": "^5.8.1"
   },
   "devDependencies": {
