@@ -21,6 +21,6 @@ app.use(express.static(PUBLIC_FILES));
 
 // middlewares
 app.use(morgan('common'));
-app.use(routers);
+app.use('/', routers);
 
-app.listen(PORT, () => console.info(`server ready on http://localhost:${PORT}`));
+app.listen(PORT, () => console.log(`server ready on http://localhost:${PORT}`));
