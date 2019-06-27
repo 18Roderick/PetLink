@@ -5,6 +5,7 @@ const morgan = require('morgan');
 const path = require('path');
 
 const routers = require('./routes/index');
+const api = require('./routes/api');
 
 const app = express();
 
@@ -17,7 +18,7 @@ app.set('port', PORT);
 // seteando direcciones estaticas en el servidor
 app.set('views', VIEWS);
 app.set('view engine', 'pug');
-app.use(express.static(PUBLIC_FILES));
+app.use(express.static(PUBLIC_FILES)); 
 
 // middlewares
 app.use(morgan('common'));

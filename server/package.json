@@ -20,20 +20,19 @@
     "pug",
     "mysql"
   ],
-  "author": "Roderick Romero, Joseluis Riascos, Kamil Navarro",
+  "author": "Roderick Romero, Joseluis Riascos, Kevin Mendoza, Deiby Lopez",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/18Roderick/PetLink/issues"
   },
   "homepage": "https://github.com/18Roderick/PetLink#readme",
   "dependencies": {
-    "express": "^4.16.4",
+    "express": "^4.17.1",
     "express-validator": "^5.3.1",
+    "mongoose": "^5.5.11",
     "morgan": "^1.9.1",
-    "mysql2": "^1.6.5",
     "nodemailer": "^6.1.1",
-    "pug": "^2.0.3",
-    "sequelize": "^5.8.1"
+    "pug": "^2.0.3"
   },
   "devDependencies": {
     "eslint": "^5.3.0",
