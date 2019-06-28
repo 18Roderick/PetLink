@@ -1,26 +1,30 @@
-//  app PetLink
-
 const express = require('express');
 const morgan = require('morgan');
 const path = require('path');
-
+const bodyParser = require('body-parser');
+// rutas
 const routers = require('./routes/index');
-const api = require('./routes/api');
 
+// inicializaciones
 const app = express();
+require('./models/connection');
 
+// variables
 const PORT = process.env.PORT || 3000;
 const PUBLIC_FILES = path.join(__dirname, 'public');
 const VIEWS = path.join(__dirname, 'views');
 
+// configuraciones
 app.set('port', PORT);
-
-// seteando direcciones estaticas en el servidor
 app.set('views', VIEWS);
 app.set('view engine', 'pug');
-app.use(express.static(PUBLIC_FILES)); 
+
+// seteando direcciones estaticas en el servidor
+app.use(express.static(PUBLIC_FILES));
 
 // middlewares
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 app.use(morgan('common'));
 app.use('/', routers);
 
