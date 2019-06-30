@@ -3,6 +3,9 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const Usuario = new Schema({
+  googleId: {
+    type: Schema.Types.ObjectId
+  },
   nombre: {
     type: String,
     required: true

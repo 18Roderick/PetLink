@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 const config = require('../config/databaseConfig');
 
 mongoose.connect(`mongodb://${config.host}/${config.database}`, {
+  useCreateIndex: true,
   useNewUrlParser: true
 });
 

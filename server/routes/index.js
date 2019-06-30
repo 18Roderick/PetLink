@@ -35,9 +35,19 @@ router.post(
   }
 );
 
-router.get('/auth/google', passport.authenticate('google', {
-  scope: ['profile']
-}))
+router.get(
+  '/auth/google',
+  passport.authenticate('google', {
+    scope: ['profile']
+  })
+);
+
+router.get('/auth/google/redirect', 
+  passport.authenticate('google', { failureRedirect: '/login' }),
+  function(req, res) {
+    // Successful authentication, redirect home.
+    res.json({ message: 'logeado exitosamente'})
+  });
 
 router.get('/loginSuccess', (req, res) => {
   console.log('todo bien ');
