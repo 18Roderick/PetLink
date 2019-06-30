@@ -4,7 +4,8 @@ const { Schema } = mongoose;
 
 const Perro = Schema({
   usuarioId: {
-    type: Schema.Types.ObjectId
+    type: Schema.Types.ObjectId,
+    required: true
   },
   nombre: {
     type: String,

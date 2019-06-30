@@ -9,6 +9,8 @@
     "node": true
   },
   "rules": {
+    "eslint-disable dot-notation": "off",
+    "no-underscore-dangle": "off",
     "prettier/prettier": ["error"],
     "max-len": [
       "warn",
