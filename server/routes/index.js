@@ -42,12 +42,14 @@ router.get(
   })
 );
 
-router.get('/auth/google/redirect', 
+router.get(
+  '/auth/google/redirect',
   passport.authenticate('google', { failureRedirect: '/login' }),
   function(req, res) {
     // Successful authentication, redirect home.
-    res.json({ message: 'logeado exitosamente'})
-  });
+    res.json({ message: 'logeado exitosamente' });
+  }
+);
 
 router.get('/loginSuccess', (req, res) => {
   console.log('todo bien ');

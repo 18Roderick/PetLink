@@ -3,8 +3,9 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const Usuario = new Schema({
-  googleId: {
-    type: Schema.Types.ObjectId
+  googleId:{
+    type: String,
+    unique: true
   },
   nombre: {
     type: String,
@@ -25,8 +26,7 @@ const Usuario = new Schema({
     }
   },
   password: {
-    type: String,
-    required: true
+    type: String
   },
   fotos: [String],
   perros: String,
