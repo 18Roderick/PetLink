@@ -1,7 +1,8 @@
 const mongoose = require('mongoose');
 const config = require('../config/databaseConfig');
 
-mongoose.connect(`mongodb://${config.host}/${config.database}`, {
+const url = config.url(config.password, config.database);
+mongoose.connect(url, {
   useNewUrlParser: true,
   useCreateIndex: true
 });
