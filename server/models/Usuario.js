@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const Usuario = new Schema({
-  googleId:{
+  googleId: {
     type: String,
     unique: true
   },
