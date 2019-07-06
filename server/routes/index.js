@@ -9,8 +9,8 @@ router.get('/', (req, res) => {
   res.send('inicio de pagina');
 });
 
-router.get('/login', (req, res) => {
-  res.send('login');
+router.get('/signin', (req, res) => {
+  res.send('signin');
 });
 
 router.get('/registrar', (req, res) => {
@@ -28,7 +28,7 @@ router.post(
 router.post(
   '/login/signin',
   passport.authenticate('signin', {
-    failureRedirect: '/loginFailure'
+    failureRedirect: '/signin'
   }),
   (req, res) => {
     res.json({ message: `Bienvenido ${req.user.nombre}` });
@@ -38,21 +38,17 @@ router.post(
 router.get(
   '/auth/google',
   passport.authenticate('google', {
-    scope: ['profile']
+    scope: ['email', 'profile']
   })
 );
 
 router.get(
   '/auth/google/redirect',
-  passport.authenticate('google', { failureRedirect: '/login' }),
-  function(req, res) {
-    // Successful authentication, redirect home.
-    res.json({ message: 'logeado exitosamente' });
-  }
+  passport.authenticate('google', { failureRedirect: '/login', successRedirect: '/loginSuccess' })
 );
 
 router.get('/loginSuccess', (req, res) => {
-  console.log('todo bien ');
+  console.log('todo bien ', req.message);
   res.json({ data: req.user });
 });
 
