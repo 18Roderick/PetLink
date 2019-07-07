@@ -1,14 +1,35 @@
-const { check } = require('express-validator');
+const { check } = require('express-validator/check');
+const Usuario = require('../models/Usuario');
 
-module.exports = [
-  check('nombre', 'falta nombre de usuario')
+const validadores = [
+  check('nombre', 'debe contener nombre del usuario')
     .not()
     .isEmpty(),
-  check('email', 'tu correo no cumple las condiciones')
+  check('apellido', 'debe contener su apellido')
+    .not()
+    .isEmpty(),
+  check('email', 'se requiere un email')
+    .not()
+    .isEmpty(),
+  check('email', 'por favor introduzca un email valido')
+    .isEmail()
+    .normalizeEmail(),
+  check('email').custom(async value => {
+    const user = await Usuario.findOne({ email: value });
+    if (user) throw new Error('El usuario ya existe');
+    return true;
+  }),
+  check('telefono').optional(),
+  check('celular').optional(),
+  check('password1')
+    .isLength({ min: 5 })
+    .withMessage('contrasena debe contener al menos 5 caracteres'),
+  check('password2')
     .not()
     .isEmpty()
-    .isEmail(),
-  check('password', 'debe contener al menos 5 caracteres')
-    .isLength({ min: 5 }),
-  check('password2').
+    .custom((value, { req }) => {
+      if (value !== req.body.password1) throw new Error('contrasenas no coinciden');
+      return true;
+    })
 ];
+module.exports = validadores;

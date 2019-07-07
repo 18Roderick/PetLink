@@ -1,5 +1,7 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
+const { validationResult } = require('express-validator/check');
+
 const Usuario = require('../models/Usuario');
 const Crypting = require('../utils/crytping');
 
@@ -12,15 +14,11 @@ passport.use(
       passReqToCallback: true
     },
     async (req, email, password, done) => {
-      console.log('dentro de passport');
+      const errors = validationResult(req);
       try {
+        if (!errors.isEmpty()) return done(null, false, { message: errors.array() });
         const { nombre, apellido, password1, celular, telefono } = req.body;
         const encryptPassword = await Crypting.encrypt(password1);
-        const exist = await Usuario.findOne({ email });
-
-        if (exist) {
-          return done(null, false, { message: 'Este usuario ya existe' });
-        }
 
         const data = await Usuario.create({
           nombre,
@@ -30,7 +28,11 @@ passport.use(
             telefono: [telefono],
             celular: [celular]
           },
-          password: encryptPassword
+          password: encryptPassword,
+          status: {
+            code: '153151515135135135',
+            active: true
+          }
         });
 
         return done(null, data);

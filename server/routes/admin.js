@@ -1,9 +1,6 @@
-const express = require('express');
+const router = require('express').Router();
+const { isAdmin } = require('../middleware/isAuthenticated');
 
-const router = express.Router();
-
-router.get('admin', (req, res) => {
-  res.send('sitio de administrador');
-});
+router.use(isAdmin);
 
 module.exports = router;
