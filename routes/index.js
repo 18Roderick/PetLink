@@ -17,6 +17,7 @@ router.get('/signin', (req, res) => {
 });
 
 router.get('/signup', (req, res) => {
+  console.log('algo salio mal volvimos al registro');
   res.send('registro');
 });
 
@@ -25,8 +26,7 @@ router.post(
   formValidator,
   passport.authenticate('signup', {
     successRedirect: '/',
-    failureRedirect: '/signup',
-    failureFlash: true
+    failureRedirect: '/signup'
   })
 );
 
@@ -34,8 +34,7 @@ router.post(
   '/login/signin',
   passport.authenticate('signin', {
     successRedirect: '/',
-    failureRedirect: '/signin',
-    failureFlash: true
+    failureRedirect: '/signin'
   })
 );
 

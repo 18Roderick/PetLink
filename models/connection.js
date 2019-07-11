@@ -13,7 +13,7 @@ const { connection } = mongoose;
 
 connection.on('error', console.error.bind(console, 'connection error:'));
 connection.once('open', (...args) => {
-  console.log(args, 'conexion exitosa');
+  console.log('conexion exitosa');
 });
 
 module.exports = mongoose;

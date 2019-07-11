@@ -22,6 +22,8 @@ const validadores = [
   check('telefono').optional(),
   check('celular').optional(),
   check('password1')
+    .not()
+    .isEmpty()
     .isLength({ min: 5 })
     .withMessage('contrasena debe contener al menos 5 caracteres'),
   check('password2')
