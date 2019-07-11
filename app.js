@@ -8,6 +8,7 @@ const MongoStore = require('connect-mongo')(session);
 const passport = require('passport');
 // rutas
 const routers = require('./routes/index');
+const users = require('./routes/users');
 const mongoose = require('./models/connection');
 
 // inicializaciones
@@ -54,5 +55,6 @@ app.use((req, res, next) => {
 
 // rutas
 app.use('/', routers);
+app.use('/users', users);
 
 app.listen(PORT, () => console.log(`server ready on http://localhost:${PORT}`));

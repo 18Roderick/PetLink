@@ -27,8 +27,6 @@ const Usuario = new Schema({
   password: {
     type: String
   },
-  fotos: [String],
-  perros: String,
   roll: {
     type: String,
     enum: ['usuario', 'admin'],

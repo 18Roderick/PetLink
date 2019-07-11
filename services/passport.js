@@ -16,10 +16,10 @@ passport.use(
     async (req, email, password, done) => {
       const errors = validationResult(req);
       try {
+        console.log('dentro del passport ', errors.array());
         if (!errors.isEmpty()) return done(null, false, { message: errors.array() });
         const { nombre, apellido, password1, celular, telefono } = req.body;
         const encryptPassword = await Crypting.encrypt(password1);
-
         const data = await Usuario.create({
           nombre,
           apellido,
@@ -31,12 +31,13 @@ passport.use(
           password: encryptPassword,
           status: {
             code: '153151515135135135',
-            active: true
+            active: false
           }
         });
 
         return done(null, data);
       } catch (error) {
+        console.log('error en localstrategy passport', error);
         return done(error, false);
       }
     }
