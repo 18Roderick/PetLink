@@ -18,12 +18,19 @@ const Usuario = new Schema({
     type: String,
     required: true
   },
+  foto: String,
   contacto: {
     type: {
       telefono: [String],
       celular: [String]
     }
   },
+  perros: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Perro'
+    }
+  ],
   password: {
     type: String
   },

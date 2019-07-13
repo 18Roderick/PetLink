@@ -6,6 +6,7 @@ const session = require('express-session');
 const cookieParser = require('cookie-parser');
 const MongoStore = require('connect-mongo')(session);
 const passport = require('passport');
+const favicon = require('serve-favicon');
 // rutas
 const routers = require('./routes/index');
 const users = require('./routes/users');
@@ -29,7 +30,7 @@ app.set('view engine', 'pug');
 
 // seteando direcciones estaticas en el servidor
 app.use(express.static(PUBLIC_FILES));
-
+app.use(favicon(path.join(PUBLIC_FILES, 'images', 'favicon.ico')));
 // middlewares
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());

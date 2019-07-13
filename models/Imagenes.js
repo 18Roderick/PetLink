@@ -3,12 +3,13 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const Imagenes = new Schema({
-  idOwner: {
-    type: Schema.Types.ObjectId
+  owner: {
+    type: Schema.Types.ObjectId,
+    ref: 'Perro'
   },
   nombre: String,
   link: String,
-  publicId: String
+  path: String
 });
 
 module.exports = mongoose.model('Imagenes', Imagenes);

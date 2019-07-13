@@ -31,6 +31,16 @@ const Perro = Schema({
       adultos: Boolean,
       descripcion: String
     }
+  },
+  fotos: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Imagenes'
+    }
+  ],
+  owner: {
+    type: Schema.Types.ObjectId,
+    ref: 'Usuario'
   }
 });
 
