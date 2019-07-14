@@ -5,6 +5,10 @@ const { Schema } = mongoose;
 const Imagenes = new Schema({
   owner: {
     type: Schema.Types.ObjectId,
+    ref: 'Usuario'
+  },
+  perro: {
+    type: Schema.Types.ObjectId,
     ref: 'Perro'
   },
   nombre: String,

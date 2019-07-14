@@ -3,25 +3,19 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const Perro = Schema({
-  usuarioId: {
-    type: Schema.Types.ObjectId,
-    required: true
-  },
   nombre: {
     type: String,
     require: true
   },
   raza: {
-    type: String,
-    required: true
+    type: String
   },
   sexo: {
     type: String,
     required: true
   },
   edad: {
-    type: Number,
-    required: true
+    type: Number
   },
   detalles: String,
   recomendado: {
@@ -31,6 +25,10 @@ const Perro = Schema({
       adultos: Boolean,
       descripcion: String
     }
+  },
+  adoptado: {
+    type: String,
+    enum: ['adoptado', 'proceso', 'adoptame']
   },
   fotos: [
     {
