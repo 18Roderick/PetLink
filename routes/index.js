@@ -8,7 +8,7 @@ const Controllers = require('./controllers');
 const formValidator = require('../middleware/formValidator');
 
 router.get('/', (req, res) => {
-  res.send('inicio de pagina');
+  res.render('index.pug');
 });
 
 router.get('/signin', (req, res) => {
