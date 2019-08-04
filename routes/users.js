@@ -4,10 +4,14 @@ const { Usuario, Imagenes } = require('../models');
 const { isAuthenticated } = require('../middleware/isAuthenticated');
 
 // router.use(isAuthenticated);
+router.get('/petlinker', (req, res) => {
+
+});
+
 router.get('/profile', async (req, res) => {
   try {
     const user = await Usuario.findById(req.user._id);
-    user.foto = await Imagenes.findOne({ usuario: user._id});
+    user.foto = await Imagenes.findOne({ usuario: user._id });
 
     res.json(user);
   } catch (error) {
@@ -17,6 +21,13 @@ router.get('/profile', async (req, res) => {
 router.post('/images/profile', imageUploader.single('profile'), async (req, res) => {
   console.log(req.file, req.files);
   res.json(req.file);
+});
+
+// registro del perro
+router.post('/dog/registro', async (req, res) => {});
+
+router.delete('/images/dog/:id', (req, res) => {
+  res.json({ id: req.params.id });
 });
 
 router.post('/images/dog', async (req, res) => {

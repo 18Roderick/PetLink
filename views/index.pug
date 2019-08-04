@@ -1,10 +1,29 @@
-<!DOCTYPE html>
-html(lang="en")
-  head
-    meta(charset="UTF-8")
-    meta(name="viewport", content="width=device-width, initial-scale=1.0")
-    meta(http-equiv="X-UA-Compatible", content="ie=edge")
-    title=title
-  body
-    h1 hello there
-    
+extends layout
+
+block body
+  section.showcase
+    .container-fluid.p-0
+      .row.no-gutters
+        .col-lg-6.order-lg-2.text-white.showcase-img(style="background-image: url('public/images/perro-caja.jpg');")
+        .col-lg-6.order-lg-1.my-auto.showcase-text
+          h2 &iexcl;Adoptame!
+          p.lead.mb-0
+            | Al adoptar una mascota, le das la oportunidad de ser un miembro de tu familia. &iexcl;Ella a cambio te da todo su amor y lealtad!
+      .row.no-gutters
+        .col-lg-6.text-white.showcase-img(style="background-image: url('./public/images/lobos-nieve.jpg');")
+        .col-lg-6.my-auto.showcase-text
+          h2 &iquest;Le buscas pareja?
+          p.lead.mb-0
+            | Bucale una pareja a tu mascota 
+            br
+            |  &iexcl;Que ya no este sola!
+      .row.no-gutters
+        .col-lg-6.order-lg-2.text-white.showcase-img(style="background-image: url('./public/images/perros-hermanos.jpg');")
+        .col-lg-6.order-lg-1.my-auto.showcase-text
+          h2 &iexcl;No lo dejes en la calle!
+          br
+          h5 &iexcl;Publicalo con nosotros!
+          p.lead.mb-0 Dale la oportunidad de que alguien mas le de amor!
+
+
+  include footer

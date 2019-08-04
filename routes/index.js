@@ -11,12 +11,16 @@ router.get('/', (req, res) => {
   res.render('index', { title: 'Petlink' });
 });
 
-router.get('/signin', (req, res) => {
-  console.log(req.session.flash);
-  res.send('signin');
+router.get('about',  (req, res) => {
+
 });
 
-router.get('/signup', (req, res) => {
+router.get('/login/signin', (req, res) => {
+  console.log(req.session.flash);
+  res.render('signin');
+});
+
+router.get('/login/signup', (req, res) => {
   console.log('algo salio mal volvimos al registro');
   res.send('registro');
 });
@@ -30,14 +34,12 @@ router.post(
   })
 );
 
-router.get('/login/signin', async (req, res) => {
-  res.json('pagina de iniciar sesion');
-});
+
 router.post(
   '/login/signin',
   passport.authenticate('signin', {
     successRedirect: '/',
-    failureRedirect: '/signin'
+    failureRedirect: '/login/signin'
   })
 );
 
@@ -50,7 +52,7 @@ router.get(
 
 router.get(
   '/auth/google/redirect',
-  passport.authenticate('google', { failureRedirect: '/login', successRedirect: '/loginSuccess' })
+  passport.authenticate('google', { failureRedirect: '/login', successRedirect: '/' })
 );
 
 router.get('/loginSuccess', (req, res) => {
