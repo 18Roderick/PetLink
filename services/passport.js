@@ -2,7 +2,7 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const { validationResult } = require('express-validator/check');
 
-const Usuario = require('../models/Usuario');
+const {Usuario, Imagenes } = require('../models');
 const Crypting = require('../utils/crytping');
 
 passport.use(
@@ -54,10 +54,13 @@ passport.use(
     async (email, password, done) => {
       try {
         const user = await Usuario.findOne({ email });
-
+        console.log(user)
         if (!user) {
           return done(null, false, { message: 'No existe este usuario' });
         }
+        if (!user.password) {
+          return done(null, false, { message: 'Usuario o contrasena incorrectos' });
+        };
         if (!(await Crypting.compare(password, user.password))) {
           return done(null, false, { message: 'Usuario o contrasena incorrectos' });
         }

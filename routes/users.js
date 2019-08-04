@@ -1,25 +1,41 @@
 const router = require('express').Router();
 const imageUploader = require('../utils/imageUploader');
-
+const { Usuario, Imagenes } = require('../models');
 const { isAuthenticated } = require('../middleware/isAuthenticated');
 
 // router.use(isAuthenticated);
-router.post('/images/upload', imageUploader.single('dog'), (req, res) => {
-  const files = {
-    fieldname: 'dog',
-    originalname: 'thumb-1920-564835.jpg',
-    encoding: '7bit',
-    mimetype: 'image/jpeg',
-    destination: 'C:\\Users\\rode_\\Documents\\desarrollo\\PetLink\\imageServer',
-    filename: 'f9af44b5-a52f-4242-b32a-93ae5ceb2481.jpg',
-    path: 'C:\\Users\\rode_\\Documents\\desarrollo\\PetLink\\imageServer\\f9af44b5-a52f-4242-b32a-93ae5ceb2481.jpg',
-    size: 382243
+router.get('/profile', async (req, res) => {
+  try {
+    const user = await Usuario.findById(req.user._id);
+    user.foto = await Imagenes.findOne({ usuario: user._id});
+
+    res.json(user);
+  } catch (error) {
+    res.json(error);
   }
-  const newImage = {
-    
-  }
+});
+router.post('/images/profile', imageUploader.single('profile'), async (req, res) => {
   console.log(req.file, req.files);
   res.json(req.file);
 });
 
+router.post('/images/dog', async (req, res) => {
+  try {
+    const server = imageUploader.array('dog', 3);
+    server(req, res, err => {
+      if (err) res.json({ ...err, message: 'solo puede subir 3 imagenes por vez' });
+      else {
+        const files = req.files.map(file => {
+          return {
+            nombre: file.filename,
+            path: `/galeria/${file.filename}`
+          };
+        });
+        res.json(files);
+      }
+    });
+  } catch (error) {
+    res.json({ error, message: 'solo se permiten 3 imagenes por perro' });
+  }
+});
 module.exports = router;

@@ -1,8 +1,10 @@
 const mongoose = require('mongoose');
 const config = require('../config/databaseConfig');
 
+const dev = 'mongodb://localhost:27017/PetlinkDevelopment';
+
 const url = config.url(config.password, config.database);
-mongoose.connect(url, {
+mongoose.connect(dev, {
   useNewUrlParser: true,
   useCreateIndex: true
 });

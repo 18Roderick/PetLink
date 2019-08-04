@@ -4,7 +4,7 @@ const uuid = require('uuid/v4');
 
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
-    cb(null, path.join(__dirname, '../imageServer'));
+    cb(null, path.join(__dirname, '../galeria'));
   },
   filename: (req, file, cb) => {
     cb(null, `${uuid()}.${file.originalname.split('.')[1]}`);

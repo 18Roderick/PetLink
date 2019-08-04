@@ -8,7 +8,7 @@ const Controllers = require('./controllers');
 const formValidator = require('../middleware/formValidator');
 
 router.get('/', (req, res) => {
-  res.render('index.pug');
+  res.render('index', { title: 'Petlink' });
 });
 
 router.get('/signin', (req, res) => {
@@ -30,6 +30,9 @@ router.post(
   })
 );
 
+router.get('/login/signin', async (req, res) => {
+  res.json('pagina de iniciar sesion');
+});
 router.post(
   '/login/signin',
   passport.authenticate('signin', {
@@ -52,7 +55,7 @@ router.get(
 
 router.get('/loginSuccess', (req, res) => {
   console.log('todo bien ', req.message);
-  res.json({ data: req.user });
+  res.json({ data: req.user, title: 'registro exitoso' });
 });
 
 router.get('/loginFailure', (req, res) => {

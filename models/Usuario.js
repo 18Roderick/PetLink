@@ -18,7 +18,10 @@ const Usuario = new Schema({
     type: String,
     required: true
   },
-  foto: String,
+  foto: {
+    type: Schema.Types.ObjectId,
+    ref: 'Imagenes'
+  },
   contacto: {
     type: {
       telefono: [String],

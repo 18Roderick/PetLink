@@ -3,20 +3,26 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const Carrito = new Schema({
-  productos: [
-    {
-      type: {
-        cantidad: Number,
+  productos: {
+    type: [
+      {
         item: {
           type: Schema.Types.ObjectId,
-          ref: 'Productos'
+          ref: 'Producto',
+          cantidad: Number,
+          precio: Number
         }
       }
-    }
-  ],
+    ]
+  },
   cliente: {
-    Type: Schema.Types.ObjectId,
+    type: Schema.Types.ObjectId,
     ref: 'Usuario'
+  },
+  total: Number,
+  status: {
+    type: String,
+    enum: ['proceso', 'vendido']
   }
 });
 

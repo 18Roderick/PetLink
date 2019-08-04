@@ -28,7 +28,8 @@ const Perro = Schema({
   },
   adoptado: {
     type: String,
-    enum: ['adoptado', 'proceso', 'adoptame']
+    enum: ['adoptado', 'adoptame', 'disponible', 'nodisponible'],
+    default: 'nodisponible'
   },
   fotos: [
     {

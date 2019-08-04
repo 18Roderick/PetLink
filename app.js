@@ -10,6 +10,7 @@ const favicon = require('serve-favicon');
 // rutas
 const routers = require('./routes/index');
 const users = require('./routes/users');
+const errorHandler = require('./routes/error');
 const mongoose = require('./models/connection');
 
 // inicializaciones
@@ -22,14 +23,15 @@ const store = new MongoStore({ mongooseConnection: mongoose.connection });
 const PORT = process.env.PORT || 3000;
 const PUBLIC_FILES = path.join(__dirname, 'public');
 const VIEWS = path.join(__dirname, 'views');
-
+const GALERIA_PATH = path.join(__dirname, 'galeria');
 // configuraciones
 app.set('port', PORT);
 app.set('views', VIEWS);
 app.set('view engine', 'pug');
 
 // seteando direcciones estaticas en el servidor
-app.use(express.static(PUBLIC_FILES));
+app.use('/public', express.static(PUBLIC_FILES));
+app.use('/galeria', express.static(GALERIA_PATH));
 app.use(favicon(path.join(PUBLIC_FILES, 'images', 'favicon.ico')));
 // middlewares
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -57,5 +59,6 @@ app.use((req, res, next) => {
 // rutas
 app.use('/', routers);
 app.use('/users', users);
+app.use(errorHandler);
 
 app.listen(PORT, () => console.log(`server ready on http://localhost:${PORT}`));

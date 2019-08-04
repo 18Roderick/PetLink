@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const Imagenes = new Schema({
-  owner: {
+  usuario: {
     type: Schema.Types.ObjectId,
     ref: 'Usuario'
   },
@@ -12,7 +12,6 @@ const Imagenes = new Schema({
     ref: 'Perro'
   },
   nombre: String,
-  link: String,
   path: String
 });
 

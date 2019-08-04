@@ -19,9 +19,10 @@ passport.use(
             nombre: profile._json.given_name,
             apellido: profile._json.family_name,
             email: profile._json.email,
-            googleId: profile._json.sub,
-            foto: profile._json.picture
+            googleId: profile._json.sub
           });
+          const imagen = await Imagenes.create({ usuario: user._id, path: profile._json.picture });
+          console.log(imagen);
         }
         return done(null, user);
       } catch (error) {
