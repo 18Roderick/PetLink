@@ -1,4 +1,60 @@
 extends layout 
 
 block body
-  h1 Tienda
+  section(id='prod-container section')
+    .container-fluid
+      .row
+        .col-xs-12.text-center
+          p.tittles-pages
+          br
+          br
+        .col-xs-12
+          .container
+            ul#TabProducts.nav.nav-tabs(role='tablist')
+              li.active
+                a(href='#all-categories' role='tab' data-toggle='tab') &nbsp; Todo
+              li
+                a(href='#smartphones' role='tab' data-toggle='tab') &nbsp; Accesorios
+              li
+                a(href='#tablets' role='tab' data-toggle='tab') &nbsp; Mascotas
+              li
+                a.dropdown-toggle(href='#' data-toggle='dropdown') &nbsp; Buscar razas 
+                  span.caret
+                ul.dropdown-menu(role='menu' aria-labelledby='myTabDrop1')
+                  li
+                    a(href='#android' tabindex='-1' role='tab' data-toggle='tab') Raza 1
+                  li
+                    a(href='#iOS' tabindex='-1' role='tab' data-toggle='tab') Raza 2
+                  li
+                    a(href='#windowsPhone' tabindex='-1' role='tab' data-toggle='tab')  Raza 3
+            .tab-content
+              // ===================================== Todas las categorias =============================================
+              #all-categories.tab-pane.active
+                br
+                p.tittles-pages Todos los productos
+                .row
+                  .col-xs-12.col-sm-6.col-md-3
+                    .thumbnail.thumbnail-content-phones
+                      img.img-responsive(src='/public/images/product.png' alt='prod-icon')
+                      .caption
+                        h3.text-center(name='nom_pet') Producto
+                        p.text-justify(name='datos_pet')
+                          | informacion de su mascota
+                        p.text-center
+                          a.btn.btn-danger(href='./detalle_producto.html' role='button') Ver m&aacute;s
+
+                .row
+                  // Paginacion productos
+                  .col-xs-12.text-center
+                    ul.pagination
+                      li
+                        a(href='#') &laquo;
+                      li.active
+                        a(href='#') 1
+                      li
+                        a(href='#') 2
+                      li
+                        a(href='#') 3
+
+  block js
+    script(src="/public/js/main.js")

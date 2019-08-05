@@ -1,10 +1,15 @@
 const mongoose = require('mongoose');
 const config = require('../config/databaseConfig');
 
-const dev = 'mongodb://localhost:27017/PetlinkDevelopment';
+let url = '';
 
-const url = config.url(config.password, config.database);
-mongoose.connect(dev, {
+if (process.env.NODE_ENV === 'production') {
+  url = config.url(config.password, config.database);
+} else {
+  url = 'mongodb://localhost:27017/PetlinkDevelopment';
+}
+
+mongoose.connect(url, {
   useNewUrlParser: true,
   useCreateIndex: true
 });

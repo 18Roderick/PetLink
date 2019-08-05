@@ -1,6 +1,10 @@
 const isAuthenticated = (req, res, next) => {
-  if (req.isAuthenticated()) next();
-  res.redirect('/login/signin');
+  if (req.isAuthenticated()) {
+    next();
+  } else {
+    req.flash('message_error', 'No estas autorizados, Necesitas inciar sesion para acceder');
+    res.redirect('/login/signin');
+  }
 };
 
 const isAdmin = (req, res, next) => {

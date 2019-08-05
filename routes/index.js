@@ -6,9 +6,15 @@ const router = express.Router();
 
 const Controllers = require('./controllers');
 const formValidator = require('../middleware/formValidator');
+const root = {};
 
 router.get('/', (req, res) => {
-  res.render('index', { title: 'Petlink' });
+  root.title = 'Petlink';
+  res.render('index', root);
+});
+
+router.get('/adopt', async (req, res) => {
+  res.render('adopt', { title: 'adopte', data: '' });
 });
 
 router.get('/about', (req, res) => {
@@ -29,7 +35,7 @@ router.post(
   formValidator,
   passport.authenticate('signup', {
     successRedirect: '/',
-    failureRedirect: '/signup'
+    failureRedirect: '/login/signup'
   })
 );
 
@@ -43,6 +49,11 @@ router.post(
   })
 );
 
+router.get('/login/logout', (req, res) => {
+  req.logout();
+  res.redirect('/');
+});
+
 router.get(
   '/auth/google',
   passport.authenticate('google', {
@@ -52,16 +63,7 @@ router.get(
 
 router.get(
   '/auth/google/redirect',
-  passport.authenticate('google', { failureRedirect: '/login', successRedirect: '/' })
+  passport.authenticate('google', { failureRedirect: '/login/signin', successRedirect: '/' })
 );
-
-router.get('/loginSuccess', (req, res) => {
-  console.log('todo bien ', req.message);
-  res.json({ data: req.user, title: 'registro exitoso' });
-});
-
-router.get('/loginFailure', (req, res) => {
-  res.json({ message: 'no se pudo crear usuario' });
-});
 
 module.exports = router;
