@@ -15,13 +15,9 @@ block body
                 // FORMULARIO DEL LOGIN, COLOCAR ACCION AQUI
                 form.user(action='/login/signin', method='POST')
                   .form-group
-                    input#InputEmail.form-control.form-control-user(type='email' aria-describedby='emailHelp' placeholder='Enter Email Address...')
+                    input#InputEmail.form-control.form-control-user(type='email' aria-describedby='emailHelp' placeholder='Email', name="email")
                   .form-group
-                    input#InputPassword.form-control.form-control-user(type='password' placeholder='Password')
-                  .form-group
-                    .custom-control.custom-checkbox.small
-                      input#customCheck.custom-control-input(type='checkbox')
-                      label.custom-control-label(for='customCheck') Recuerdame
+                    input#InputPassword.form-control.form-control-user(type='password' placeholder='Contraseña', name='password')
                   button.btn.btn-primary.btn-user.btn-block(href='index.html')
                     | Iniciar sesion
                   hr
@@ -30,8 +26,8 @@ block body
                     |  Login with Google
                 hr
                 .text-center
-                  a.small(href='forgot-password.html') Olvide mi contrase&ntilde;a
+                  a.small(href='/password/reset') Olvide mi contrase&ntilde;a
                 .text-center
-                  a.small(href='register.html') Crear nueva cuenta
+                  a.small(href='/login/signup') Crear nueva cuenta
 
   

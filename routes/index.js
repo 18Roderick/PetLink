@@ -11,18 +11,17 @@ router.get('/', (req, res) => {
   res.render('index', { title: 'Petlink' });
 });
 
-router.get('about',  (req, res) => {
-
+router.get('/about', (req, res) => {
+  res.render('about', { title: 'acerca de' });
 });
 
 router.get('/login/signin', (req, res) => {
-  console.log(req.session.flash);
-  res.render('signin');
+  console.log(req.locals);
+  res.render('signin', { title: 'Iniciar sesion' });
 });
 
 router.get('/login/signup', (req, res) => {
-  console.log('algo salio mal volvimos al registro');
-  res.send('registro');
+  res.render('signup', { title: 'Registro de Usuario' });
 });
 
 router.post(
@@ -34,12 +33,13 @@ router.post(
   })
 );
 
-
 router.post(
   '/login/signin',
   passport.authenticate('signin', {
     successRedirect: '/',
-    failureRedirect: '/login/signin'
+    failureRedirect: '/login/signin',
+    failureFlash: true,
+    successFlash: true
   })
 );
 

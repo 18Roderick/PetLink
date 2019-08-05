@@ -1,0 +1,12 @@
+.message
+  case message
+    when 'warning'
+      p mensaje de warning #{message}
+    
+    when 'error'
+      p mensahe de error  #{message}
+    when 'info'
+      p mensaje de informacion #{message}
+
+if(message_succes.length > 0)
+  .alert.alert-success(role='alert') Bienvenido #{message_succes}

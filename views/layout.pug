@@ -3,13 +3,16 @@ html(lang="es")
     meta(charset='UTF-8')
     meta(name='viewport' content='width=device-width, initial-scale=1.0')
     meta(http-equiv='X-UA-Compatible' content='ie=edge')
-    title inicio
     link(rel='stylesheet' href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T' crossorigin='anonymous')
     link(href='https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic' rel='stylesheet' type='text/css')
     link(href='/public/vendors/fontawesome-free/css/all.min.css' rel='stylesheet')
     link(href='/public/vendors/simple-line-icons/css/simple-line-icons.css' rel='stylesheet' type='text/css')
     // Custom styles for this template
     link(rel='stylesheet' href='/public/css/landing-page.css')
+    link(rel='stylesheet' href='/public/css/style.css')
+    link(rel='stylesheet' href='/public/css/css.css')
+
+    title=title
   body
     nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.sticky-top
       a.navbar-brand(href='/')
@@ -25,4 +28,7 @@ html(lang="es")
           a.nav-item.nav-link(href='/about') Nosotros
           a.nav-item.nav-link(href='/login/signup') Registro
     .container-fluid
+      include message
       block body
+      
+    include footer

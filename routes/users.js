@@ -5,9 +5,12 @@ const { isAuthenticated } = require('../middleware/isAuthenticated');
 
 // router.use(isAuthenticated);
 router.get('/petlinker', (req, res) => {
-
+  res.render('petlinker', { title: 'Petlinker' });
 });
 
+router.get('/store', (req, res) => {
+  res.render('store');
+});
 router.get('/profile', async (req, res) => {
   try {
     const user = await Usuario.findById(req.user._id);

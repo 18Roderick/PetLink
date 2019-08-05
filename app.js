@@ -7,12 +7,13 @@ const cookieParser = require('cookie-parser');
 const MongoStore = require('connect-mongo')(session);
 const passport = require('passport');
 const favicon = require('serve-favicon');
+const flash = require('connect-flash');
 // rutas
 const routers = require('./routes/index');
 const users = require('./routes/users');
 const errorHandler = require('./routes/error');
 const mongoose = require('./models/connection');
-
+const flashConfig = require('./middleware/flashConfig');
 // inicializaciones
 const app = express();
 require('./services/passport');
@@ -48,13 +49,11 @@ app.use(
 
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(morgan('common'));
+app.use(flash());
+app.use(morgan('dev'));
 
 // Global Variables
-app.use((req, res, next) => {
-  res.locals.user = req.user || null;
-  next();
-});
+app.use(flashConfig);
 
 // rutas
 app.use('/', routers);
