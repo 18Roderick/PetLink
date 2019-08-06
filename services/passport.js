@@ -15,9 +15,10 @@ passport.use(
     },
     async (req, email, password, done) => {
       const errors = validationResult(req);
+      const errorMessage = errors.array().map(m => m.msg);
       try {
-        console.log('dentro del passport ', errors.array());
-        if (!errors.isEmpty()) return done(null, false, { message: errors.array() });
+        console.log('dentro del passport ', errorMessage);
+        if (!errors.isEmpty()) return done(null, false, req.flash('errors', errorMessage));
         const { nombre, apellido, password1, celular, telefono } = req.body;
         const encryptPassword = await Crypting.encrypt(password1);
         const data = await Usuario.create({
@@ -30,7 +31,7 @@ passport.use(
           },
           password: encryptPassword,
           status: {
-            code: '153151515135135135',
+            code: '',
             active: false
           }
         });
@@ -49,22 +50,27 @@ passport.use(
   new LocalStrategy(
     {
       usernameField: 'email',
-      passwordField: 'password'
+      passwordField: 'password',
+      passReqToCallback: true
     },
-    async (email, password, done) => {
+    async (req, email, password, done) => {
       try {
         const user = await Usuario.findOne({ email });
         if (!user) {
-          return done(null, false, { message: 'No existe este usuario' });
+          return done(null, false, req.flash('errors', 'no existe el usuario'));
         }
         if (!user.password) {
-          return done(null, false, { message: 'Usuario o contrasena incorrectos' });
+          return done(null, false, req.flash('errors', 'usuario o contraseña no coinciden'));
         }
         if (!(await Crypting.compare(password, user.password))) {
-          return done(null, false, { message: 'Usuario o contrasena incorrectos' });
+          return done(null, false, req.flash('errors', 'usuario o contraseña no coinciden'));
         }
 
-        return done(null, user, { message_succes: `Bienvenido ${user.nombre} ${user.apellido}` });
+        return done(
+          null,
+          user,
+          req.flash('message_succes', `Bienvenido ${user.nombre} ${user.apellido}`)
+        );
       } catch (error) {
         return done(error, false, { message: error.message });
       }

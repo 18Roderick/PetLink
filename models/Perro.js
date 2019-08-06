@@ -12,7 +12,8 @@ const Perro = Schema({
   },
   sexo: {
     type: String,
-    required: true
+    required: true,
+    enum: ['H', 'M']
   },
   edad: {
     type: Number
@@ -26,7 +27,7 @@ const Perro = Schema({
       descripcion: String
     }
   },
-  adoptado: {
+  status: {
     type: String,
     enum: ['adoptado', 'adoptame', 'disponible', 'nodisponible'],
     default: 'nodisponible'

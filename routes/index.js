@@ -6,6 +6,7 @@ const router = express.Router();
 
 const Controllers = require('./controllers');
 const formValidator = require('../middleware/formValidator');
+
 const root = {};
 
 router.get('/', (req, res) => {
@@ -35,7 +36,9 @@ router.post(
   formValidator,
   passport.authenticate('signup', {
     successRedirect: '/',
-    failureRedirect: '/login/signup'
+    failureRedirect: '/login/signup',
+    failureFlash: true,
+    successFlash: true
   })
 );
 

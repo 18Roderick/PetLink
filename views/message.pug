@@ -9,6 +9,10 @@
       p mensaje de informacion #{message}
 
 if(message_succes.length > 0)
-  .alert.alert-success(role='alert') Bienvenido #{message_succes}
+  .alert.alert-success(role='alert') #{message_succes}
 if(message_error.length > 0)
   .alert.alert-warning(role='alert') #{message_error}
+
+if(errors.length > 0)
+  for err in errors
+    .alert.alert-danger(role='alert') #{err}

@@ -12,21 +12,21 @@ block body
           .container
             ul#TabProducts.nav.nav-tabs(role='tablist')
               li.active
-                a(href='#all-categories' role='tab' data-toggle='tab') &nbsp; Todo
+                a(href='#all-categories' role='tab' data-toggle='tab')
+                  i.fa.fa-th
+                  | &nbsp; Todo
               li
-                a(href='#smartphones' role='tab' data-toggle='tab') &nbsp; Accesorios
+                a(href='#smartphones' role='tab' data-toggle='tab')
+                  i.fa.fa-mobile
+                  | &nbsp; Accesorios
               li
-                a(href='#tablets' role='tab' data-toggle='tab') &nbsp; Mascotas
+                a(href='#tablets' role='tab' data-toggle='tab')
+                  i.fa.fa-tablet
+                  | &nbsp; Mascotas
               li
-                a.dropdown-toggle(href='#' data-toggle='dropdown') &nbsp; Buscar razas 
-                  span.caret
-                ul.dropdown-menu(role='menu' aria-labelledby='myTabDrop1')
-                  li
-                    a(href='#android' tabindex='-1' role='tab' data-toggle='tab') Raza 1
-                  li
-                    a(href='#iOS' tabindex='-1' role='tab' data-toggle='tab') Raza 2
-                  li
-                    a(href='#windowsPhone' tabindex='-1' role='tab' data-toggle='tab')  Raza 3
+                a(href='#tablets' role='tab' data-toggle='tab')
+                  i.fa.fa-tablet
+                  | &nbsp; Mascotas
             .tab-content
               // ===================================== Todas las categorias =============================================
               #all-categories.tab-pane.active
@@ -35,14 +35,13 @@ block body
                 .row
                   .col-xs-12.col-sm-6.col-md-3
                     .thumbnail.thumbnail-content-phones
-                      img.img-responsive(src='/public/images/product.png' alt='prod-icon')
+                      img.img-responsive(src='assets/img/product.png' alt='prod-icon')
                       .caption
                         h3.text-center(name='nom_pet') Producto
                         p.text-justify(name='datos_pet')
                           | informacion de su mascota
                         p.text-center
                           a.btn.btn-danger(href='./detalle_producto.html' role='button') Ver m&aacute;s
-
                 .row
                   // Paginacion productos
                   .col-xs-12.text-center
@@ -55,6 +54,73 @@ block body
                         a(href='#') 2
                       li
                         a(href='#') 3
+                      //
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#">6</a></li>
+                        <li><a href="#">7</a></li>
+                        <li><a href="#">&raquo;</a></li>
+              // ===================================== SmartPhones =============================================
+              #smartphones.tab-pane
+                p.tittles-pages Accesorios
+                .row
+                  .col-xs-12.col-sm-6.col-md-3
+                    .thumbnail.thumbnail-content-phones
+                      img.img-responsive(src='assets/img/phone-smartphone.png' name='acces_img')
+                      .caption
+                        h3.text-center(name='accesorios_dp') Accesorios
+                        p.text-justify(name='acces_descrip')
+                          | Accesorios
+                        p.text-center
+                          a.btn.btn-danger(href='./detalle_producto.html' role='button') Ver m&aacute;s
+                .row
+                  // Paginacion productos
+                  .col-xs-12.text-center
+                    ul.pagination
+                      li
+                        a(href='#') &laquo;
+                      li.active
+                        a(href='#') 1
+                      li
+                        a(href='#') 2
+                      li
+                        a(href='#') 3
+                      //
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#">6</a></li>
+                        <li><a href="#">7</a></li>
+                        <li><a href="#">&raquo;</a></li>
+              // ===================================== Tablets =============================================
+              #tablets.tab-pane
+                p.tittles-pages Mascotas
+                .row
+                  .col-xs-12.col-sm-6.col-md-3
+                    .thumbnail.thumbnail-content-phones
+                      img.img-responsive(src='assets/img/tablet.png' alt='Tablet')
+                      .caption
+                        h3.text-center(name='name_pet') Mascota
+                        p.text-justify
+                          | Datos de la mascota
+                        p.text-center
+                          a.btn.btn-danger(href='./detalles_pet.html' role='button') Ver m&aacute;s
+                .row
+                  // Paginacion productos
+                  .col-xs-12.text-center
+                    ul.pagination
+                      li
+                        a(href='#') &laquo;
+                      li.active
+                        a(href='#') 1
+                      li
+                        a(href='#') 2
+                      li
+                        a(href='#') 3
+                      //
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li><a href="#">6</a></li>
+                        <li><a href="#">7</a></li>
+                        <li><a href="#">&raquo;</a></li>
 
-  block js
-    script(src="/public/js/main.js")
+

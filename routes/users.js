@@ -1,6 +1,6 @@
 const router = require('express').Router();
-const imageUploader = require('../utils/imageUploader');
-const { Usuario, Imagenes } = require('../models');
+const { upload: imageUploader } = require('../utils/imageUploader');
+const { Usuario, Imagenes, Producto } = require('../models');
 const { isAuthenticated } = require('../middleware/isAuthenticated');
 
 router.use(isAuthenticated);
@@ -9,8 +9,8 @@ router.get('/petlinker', (req, res) => {
   res.render('petlinker', { title: 'Petlinker' });
 });
 
-router.get('/store', (req, res) => {
-  res.render('store');
+router.get('/store', async (req, res) => {
+  res.render('store', { title: 'Tienda' });
 });
 router.get('/profile', async (req, res) => {
   try {
@@ -22,9 +22,19 @@ router.get('/profile', async (req, res) => {
     res.json(error);
   }
 });
+
+router.get('/profile/update', (req, res) => {
+  res.render('profile/update');
+});
+
+router.('/profile/update');
+
 router.post('/images/profile', imageUploader.single('profile'), async (req, res) => {
   console.log(req.file, req.files);
   res.json(req.file);
+});
+router.put('/images/profile', imageUploader.single('profile'), async (req, res) => {
+  
 });
 
 // registro del perro

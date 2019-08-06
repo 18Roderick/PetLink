@@ -13,4 +13,18 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
-module.exports = upload;
+const singleUpload = (req, res, field) => {
+  const server = upload.single(field);
+  server(req, res, err => {
+    if (err) throw new Error('no se pudo subir imagen');
+    else {
+      const file = {
+        nombre: req.file.filename,
+        path: `/galeria/${req.file.filename}`
+      };
+      return file;
+    }
+  });
+};
+
+module.exports = { upload };
