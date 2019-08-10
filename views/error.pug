@@ -1,5 +1,20 @@
 extends layout
 
 block body
-  h3=message
-  p=stack
+  .main-content
+    // Section: home
+    section#home.fullscreen.bg-lightest
+      .display-table.text-center
+        .display-table-cell
+          .container.pt-0.pb-0
+            .row
+              .col-md-6.col-md-offset-3
+                h1.text-theme-colored.font-weight-600.font-100 404
+                h3.mt-0.mb-5 Pagina no Encontrada
+                p=stack
+                p=message
+                a.btn.btn-default.smooth-scroll(href='/')
+                  i.fa.fa-hand-o-left.font-16.mr-10
+                  | Volver
+
+

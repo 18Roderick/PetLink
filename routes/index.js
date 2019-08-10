@@ -13,7 +13,9 @@ router.get('/', (req, res) => {
   root.title = 'Petlink';
   res.render('index', root);
 });
-
+router.get('/test', (req, res) => {
+  res.render('test');
+})
 router.get('/adopt', async (req, res) => {
   res.render('adopt', { title: 'adopte', data: '' });
 });

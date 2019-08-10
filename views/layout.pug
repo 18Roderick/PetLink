@@ -1,41 +1,133 @@
-html(lang="es")
+html
   head
-    meta(charset='UTF-8')
-    meta(name='viewport' content='width=device-width, initial-scale=1.0')
-    meta(http-equiv='X-UA-Compatible' content='ie=edge')
-    // Custom styles for this template
-    //link(rel='stylesheet' href='/public/css/bootstrap.min.css')
-    link(rel="stylesheet", href="/public/vendors/bootstrap/css/bootstrap.min.css")
+    // Meta Tags
+    meta(name='viewport' content='width=device-width,initial-scale=1.0')
+    meta(http-equiv='content-type' content='text/html; charset=UTF-8')
 
     title=title
-  body
-    nav.navbar.navbar-expand-lg.navbar-dark.bg-dark.sticky-top
-      a.navbar-brand(href='/')
-        img.d-inline-block.align-top(src='../public/images/logo.svg' width='50' height='50' alt='logo petlink')
-        | &#x9;&#x9;Petlink
-      button.navbar-toggler(type='button' data-toggle='collapse' data-target='#navbarPrincipal' aria-controls='navbarNavAltMarkup' aria-expanded='false' aria-label='Toggle navigation')
-        span.navbar-toggler-icon
-      #navbarPrincipal.collapse.navbar-collapse
-        .navbar-nav.text-center.ml-auto
-          a.nav-item.nav-link(href='/users/petlinker') Petlinker&#x9;
-          a.nav-item.nav-link(href='/adopt') Adopte
-          a.nav-item.nav-link(href='/users/store') Tienda
-          a.nav-item.nav-link(href='/about') Nosotros
-          if !user
-            a.nav-item.nav-link(href='/login/signup') Registro
-            a.nav-item.nav-link(href='/login/signin') login
-          else
-            a.nav-item.nav-link(href='/users/profile') #{user.nombre}
-            a.nav-item.nav-link(href='/login/logout') salir
+    // Stylesheet
+    link(href='/public/css/bootstrap.min.css' rel='stylesheet' type='text/css')
+    link(href='/public/css/jquery-ui.min.css' rel='stylesheet' type='text/css')
+    link(href='/public/css/animate.css' rel='stylesheet' type='text/css')
+    link(href='/public/css/css-plugin-collections.css' rel='stylesheet')
+    // CSS | menuzord megamenu skins
+    link(href='/public/css/menuzord-megamenu.css' rel='stylesheet')
+    link#menuzord-menu-skins(href='/public/css/menuzord-skins/menuzord-boxed.css' rel='stylesheet')
+    // CSS | Main style file
+    link(href='/public/css/style-main.css' rel='stylesheet' type='text/css')
+    // CSS | Preloader Styles
+    link(href='/public/css/preloader.css' rel='stylesheet' type='text/css')
+    // CSS | Custom Margin Padding Collection
+    link(href='/public/css/custom-bootstrap-margin-padding.css' rel='stylesheet' type='text/css')
+    // CSS | Responsive media queries
+    link(href='/public/css/responsive.css' rel='stylesheet' type='text/css')
+    // CSS | Style css. This is the file where you can place your own custom css code. Just uncomment it and use it.
+    // <link href="css/style.css" rel="stylesheet" type="text/css">
+    // Revolution Slider 5.x CSS settings
+    link(href='/public/js/revolution-slider/css/settings.css' rel='stylesheet' type='text/css')
+    link(href='/public/js/revolution-slider/css/layers.css' rel='stylesheet' type='text/css')
+    link(href='/public/js/revolution-slider/css/navigation.css' rel='stylesheet' type='text/css')
+    // CSS | Theme Color
+    link(href='/public/css/colors/theme-skin-color-set1.css' rel='stylesheet' type='text/css')
+    // external javascripts
+    script(src='/public/css/jquery-2.2.4.min.js')
+    script(src='/public/css/jquery-ui.min.js')
+    script(src='/public/css/bootstrap.min.js')
+    // JS | jquery plugin collection for this theme
+    script(src='/public/css/jquery-plugin-collection.js')
+    // Revolution Slider 5.x SCRIPTS
+    script(src='/public/css/revolution-slider/js/jquery.themepunch.tools.min.js')
+    script(src='/public/css/revolution-slider/js/jquery.themepunch.revolution.min.js')
+
+  body(class="has-side-panel side-panel-right fullwidth-page")
+    header#header.header
+      .header-top.bg-theme-colored2.sm-text-center
+        .container
+      .header-nav
+        .header-nav-wrapper.navbar-scrolltofixed.bg-white
+          .container
+            nav#menuzord-right.menuzord.no-bg
+              a.menuzord-brand.pull-left.flip.mb-15(href='index-mp-layout1.html')
+                img(src='/public/images/logo-wide.png' alt='')
+              ul.list-inline.nav-side-icon-list.pull-right
+                li
+                  .woocommerce.top-nav-mini-cart-icon-container
+                    .top-nav-mini-cart-icon-contents
+                      a.mini-cart-icon(href='#' title='View your shopping cart')
+                        i.icon_cart_alt
+                        span.items-count 2
+                        span.cart-quick-info
+                          | 2 items - 
+                          span.woocommerce-Price-amount.amount
+                            span.woocommerce-Price-currencySymbol &pound;
+                            | 38.00
+                      .dropdown-content
+                        .dropdown-content-wrapper
+                          ul.woocommerce-mini-cart.cart_list.product_list_widget
+                            li.woocommerce-mini-cart-item.mini_cart_item
+                              a.remove(href='#' aria-label='Remove this item' data-product_id='3265' data-product_sku='') &times;
+                              a(href='#')
+                                img(src='http://placehold.it/68x68' alt='' width='68')
+                                | Happy Ninja
+                              span.quantity
+                                | 1 &times; 
+                                span.woocommerce-Price-amount.amount
+                                  span.woocommerce-Price-currencySymbol &pound;
+                                  | 18.00
+                            li.woocommerce-mini-cart-item.mini_cart_item
+                              a.remove(href='#' aria-label='Remove this item' data-product_id='31' data-product_sku='') &times;
+                              a(href='#')
+                                img(src='http://placehold.it/68x68' alt='' width='68')
+                                | Ninja Silhouette
+                              span.quantity
+                                | 1 &times; 
+                                span.woocommerce-Price-amount.amount
+                                  span.woocommerce-Price-currencySymbol &pound;
+                                  | 20.00
+                          .woocommerce-mini-cart__total.total.cart-subtotal
+                            | Subtotal: 
+                            span
+                              span.woocommerce-Price-amount.amount
+                                span.woocommerce-Price-currencySymbol &pound;
+                                | 38.00
+                          .woocommerce-mini-cart__buttons.buttons.cart-action-buttons
+                            .row
+                              .col-xs-6.pr-5
+                                a.btn.btn-gray.btn-block.wc-forward(href='http://kodesolution.net/demo/wp/medicale-wp/cart/') View Cart
+                              .col-xs-6.pl-5
+                                a.btn.btn-dark.btn-theme-colored.btn-block.checkout.wc-forward(href='http://kodesolution.net/demo/wp/medicale-wp/checkout/') Checkout
+              ul.menuzord-menu
+                li
+                  a(href='#home') Home
+                li
+                  a(href='#') Adopta
+                li
+                  a(href='#home') Tienda
+                li
+                  a(href='#') Cuenta
+                  ul.dropdown
+                    li
+                      a(href='#') Inicio de sesion
+                    li
+                      a(href='#') Registrar
+                    li
+                      a(href='#') Administrativo
+
+        .container-fluid
+          include message
+          block body
           
-    .container-fluid
-      include message
-      block body
-      
-    include footer
+        include footer
 
   block scripts
-    script(src="/public/vendors/jquery/jquery.min.js")
-    script(src="/public/js/main.js")
-    script(src='/public/vendors/bootstrap/js/bootstrap.min.js')
-    script(src='https://code.jquery.com/jquery-3.3.1.slim.min.js' integrity='sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo' crossorigin='anonymous')
+    script(type='text/javascript' src='/public/js/revolution-slider/js/extensions/revolution.extension.actions.min.js')
+    script(type='text/javascript' src='/public/js/revolution-slider/js/extensions/revolution.extension.carousel.min.js')
+    script(type='text/javascript' src='/public/js/revolution-slider/js/extensions/revolution.extension.kenburn.min.js')
+    script(type='text/javascript' src='/public/js/revolution-slider/js/extensions/revolution.extension.layeranimation.min.js')
+    script(type='text/javascript' src='/public/js/revolution-slider/js/extensions/revolution.extension.migration.min.js')
+    script(type='text/javascript' src='/public/js/revolution-slider/js/extensions/revolution.extension.navigation.min.js')
+    script(type='text/javascript' src='/public/js/revolution-slider/js/extensions/revolution.extension.parallax.min.js')
+    script(type='text/javascript' src='/public/js/revolution-slider/js/extensions/revolution.extension.slideanims.min.js')
+    script(type='text/javascript' src='/public/js/revolution-slider/js/extensions/revolution.extension.video.min.js')
+
+
