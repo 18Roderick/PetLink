@@ -27,7 +27,9 @@ router.get('/profile/update', (req, res) => {
   res.render('profile/update');
 });
 
-router.('/profile/update');
+router.put('/profile/update', (req, res) => {
+  res.send('aqui debe ir la actualizacion')
+});
 
 router.post('/images/profile', imageUploader.single('profile'), async (req, res) => {
   console.log(req.file, req.files);
