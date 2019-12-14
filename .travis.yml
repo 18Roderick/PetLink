@@ -1,8 +1,6 @@
 language: node_js
-node_js:
-  - "12"
-env:
-  - DB=Mongo
-  - SH=bash
-services:
-  - mongo
+node_js: 
+  - "stable"
+cache:
+  directories:
+    - "node_modules"
