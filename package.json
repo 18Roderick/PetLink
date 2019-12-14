@@ -4,7 +4,6 @@
   "description": "proyecto de desarrollo 9 E-commerce",
   "main": "app.js",
   "scripts": {
-    "test": "",
     "start": "node app.js",
     "dev": "nodemon app.js"
   },
