@@ -11,11 +11,14 @@ const root = {};
 
 router.get('/', (req, res) => {
   root.title = 'Petlink';
-  res.render('index', root);
+  res.status(200).json({
+    message: 'This a test',
+    status: true
+  });
 });
 router.get('/test', (req, res) => {
   res.render('test');
-})
+});
 router.get('/adopt', async (req, res) => {
   res.render('adopt', { title: 'adopte', data: '' });
 });
