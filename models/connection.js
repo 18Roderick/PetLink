@@ -6,7 +6,8 @@ let url = '';
 if (process.env.NODE_ENV === 'production') {
   url = config.url(config.password, config.database);
 } else {
-  url = 'mongodb://localhost:27017/PetlinkDevelopment';
+  url = config.url(config.password, config.database);
+  //url = 'mongodb://localhost:27017/PetlinkDevelopment';
 }
 
 mongoose.connect(url, {

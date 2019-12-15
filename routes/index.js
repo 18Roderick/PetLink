@@ -11,10 +11,7 @@ const root = {};
 
 router.get('/', (req, res) => {
   root.title = 'Petlink';
-  res.status(200).json({
-    message: 'This a test',
-    status: true
-  });
+  res.status(200).render('index', { title: 'Petlink' });
 });
 router.get('/test', (req, res) => {
   res.render('test');
@@ -24,7 +21,7 @@ router.get('/adopt', async (req, res) => {
 });
 
 router.get('/about', (req, res) => {
-  res.render('about', { title: 'acerca de' });
+  res.render('about', { title: 'Sobre Nosotros' });
 });
 
 router.get('/login/signin', (req, res) => {
