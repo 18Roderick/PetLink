@@ -11,6 +11,7 @@ const flash = require('connect-flash');
 // rutas
 const routers = require('./routes/index');
 const users = require('./routes/users');
+const robot = require('./routes/robot');
 const errorHandler = require('./routes/error');
 const mongoose = require('./models/connection');
 const flashConfig = require('./middleware/flashConfig');
@@ -56,8 +57,10 @@ app.use(morgan('dev'));
 app.use(flashConfig);
 
 // rutas
+app.use(robot);
 app.use('/', routers);
 app.use('/users', users);
+
 app.use(errorHandler);
 
 app.listen(PORT, () => console.log(`server ready on http://localhost:${PORT}`));

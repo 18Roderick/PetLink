@@ -12,7 +12,8 @@ if (process.env.NODE_ENV === 'production') {
 
 mongoose.connect(url, {
   useNewUrlParser: true,
-  useCreateIndex: true
+  useCreateIndex: true,
+  useUnifiedTopology: true
 });
 
 mongoose.Promise = global.Promise;
